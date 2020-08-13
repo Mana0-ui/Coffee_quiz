@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -115,6 +116,11 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialogInterface, int i) {
                 if(quizCount ==QUIZ_COUNT){
                     //結果画面に移動する
+                    //ResultActivityを開く
+                    Intent intent = new Intent(getApplicationContext(),ResultActivity.class);
+                    //RIGHT_ANSWER_COUNTで取り出し、rightAnswerCountの値を渡す
+                    intent.putExtra("RIGHT_ANSWER_COUNT",rightAnswerCount);
+                    startActivity(intent);
                 }else{
                     quizCount++;
                     showNextQuiz();
